@@ -20,9 +20,9 @@ jobs:
 
     - name: Quiz Build
       env:
-        TEST_BAD_QUIZ_FILE: "${GITHUB_WORKSPACE}/quiz/data/test_bad.csv"
-        TEST_GOOD_QUIZ_FILE: "${GITHUB_WORKSPACE}/quiz/data/test_good.csv"
-      run: cd quiz && go build -v ./...
+        TEST_BAD_QUIZ_FILE: "${GITHUB_REPOSITORY}/quiz/data/test_bad.csv"
+        TEST_GOOD_QUIZ_FILE: ${GITHUB_WORKSPACE}/quiz/data/test_good.csv
+      run: echo ${TEST_BAD_QUIZ_FILE} && echo $GITHUB_REPOSITORY && cd quiz && go build -v ./...
 
     - name: Test
       run: cd quiz && go test -v ./...
