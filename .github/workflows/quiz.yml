@@ -6,9 +6,9 @@ on:
   pull_request:
     branches: [ "master" ]
 
-env:
-  TEST_BAD_QUIZ_FILE: ${{ env.GITHUB_ACTION_PATH }}/quiz/data/test_bad.csv
-  TEST_GOOD_QUIZ_FILE: ${{ envGITHUB_ACTION_PATH }}/quiz/data/test_good.csv
+#env:
+#  TEST_BAD_QUIZ_FILE: ${{ env.GITHUB_ACTION_PATH }}/quiz/data/test_bad.csv
+#  TEST_GOOD_QUIZ_FILE: ${{ envGITHUB_ACTION_PATH }}/quiz/data/test_good.csv
 
 jobs:
   build:
@@ -37,4 +37,4 @@ jobs:
         go-version: 1.18
 
     - name: Unit Tests
-      run: echo ${env} && cd quiz && go test -v ./...
+      run: echo ${GITHUB_ENV} && cd quiz && go test -v ./...
