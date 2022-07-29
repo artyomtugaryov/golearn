@@ -6,8 +6,12 @@ on:
   pull_request:
     branches: [ "master" ]
 
-jobs:
+env:
+  TEST_BAD_QUIZ_FILE: quiz/data/test_bad.csv
+  TEST_GOOD_QUIZ_FILE: quiz/data/test_good.csv
 
+
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
@@ -18,8 +22,8 @@ jobs:
       with:
         go-version: 1.18
 
-    - name: Build
-      run: go build -v ./...
+    - name: Quiz Build
+      run: cd quiz && go build -v ./...
 
     - name: Test
-      run: go test -v ./...
+      run: cd quiz && go test -v ./...
