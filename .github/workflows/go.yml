@@ -8,7 +8,7 @@ on:
 
 
 jobs:
-  Build:
+  build:
     runs-on: ubuntu-latest
     
     steps:
@@ -19,10 +19,10 @@ jobs:
       with:
         go-version: 1.18
 
-    - name: Unit Test
-      run: echo "${{ env.TEST_BAD_QUIZ_FILE }}" && echo "${TEST_BAD_QUIZ_FILE}" && cd quiz && go test -v ./...
+    - name: Build
+      run: cd quiz && go build -v ./...
   
-  Tests:
+  tests:
     runs-on: ubuntu-latest
 
     env:
@@ -37,5 +37,5 @@ jobs:
       with:
         go-version: 1.18
 
-    - name: Unit Test
+    - name: Unit Tests
       run: echo "${{ env.TEST_BAD_QUIZ_FILE }}" && echo "${TEST_BAD_QUIZ_FILE}" && cd quiz && go test -v ./...
