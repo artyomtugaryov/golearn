@@ -24,5 +24,5 @@ jobs:
     - name: Unit Test
       env:
         TEST_BAD_QUIZ_FILE: "quiz/data/test_bad.csv"
-        TEST_GOOD_QUIZ_FILE: "$quiz/data/test_good.csv"
+        TEST_GOOD_QUIZ_FILE: "quiz/data/test_good.csv"
       run: pwd && cd quiz && go test -v ./...
