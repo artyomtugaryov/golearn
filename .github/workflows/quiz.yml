@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      TEST_BAD_QUIZ_FILE: ${{ env.TEST_BAD_QUIZ_FILE }}/quiz/data/test_bad.csv
+      TEST_BAD_QUIZ_FILE: ${TEST_BAD_QUIZ_FILE}/quiz/data/test_bad.csv
       TEST_GOOD_QUIZ_FILE: ${GITHUB_ACTION_PATH}/quiz/data/test_good.csv
     
     steps:
@@ -38,4 +38,4 @@ jobs:
         go-version: 1.18
 
     - name: Unit Tests
-      run: echo "${{ env.TEST_BAD_QUIZ_FILE }}" && echo "${TEST_BAD_QUIZ_FILE}" && cd quiz && go test -v ./...
+      run: echo ${TEST_BAD_QUIZ_FILE} && echo "${TEST_BAD_QUIZ_FILE}" && cd quiz && go test -v ./...
