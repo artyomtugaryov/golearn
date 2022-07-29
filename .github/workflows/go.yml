@@ -8,8 +8,9 @@ on:
 
 
 jobs:
-  Quiz:
+  Build:
     runs-on: ubuntu-latest
+    
     steps:
     - uses: actions/checkout@v3
 
@@ -18,11 +19,23 @@ jobs:
       with:
         go-version: 1.18
 
-    - name: Build
-      run: cd quiz && go build -v ./...
+    - name: Unit Test
+      run: echo "${{ env.TEST_BAD_QUIZ_FILE }}" && echo "${TEST_BAD_QUIZ_FILE}" && cd quiz && go test -v ./...
+  
+  Tests:
+    runs-on: ubuntu-latest
+
+    env:
+      TEST_BAD_QUIZ_FILE: ${{ env.TEST_BAD_QUIZ_FILE }}/quiz/data/test_bad.csv
+      TEST_GOOD_QUIZ_FILE: ${GITHUB_ACTION_PATH}/quiz/data/test_good.csv
+    
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.18
 
     - name: Unit Test
-      env:
-        TEST_BAD_QUIZ_FILE: ${{ env.TEST_BAD_QUIZ_FILE }}/quiz/data/test_bad.csv
-        TEST_GOOD_QUIZ_FILE: ${GITHUB_ACTION_PATH}/quiz/data/test_good.csv
       run: echo "${{ env.TEST_BAD_QUIZ_FILE }}" && echo "${TEST_BAD_QUIZ_FILE}" && cd quiz && go test -v ./...
