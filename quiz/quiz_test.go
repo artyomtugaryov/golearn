@@ -113,15 +113,13 @@ func TestQuizWithWrongAnswers(t *testing.T) {
 	}
 }
 
-func testEmptyAnswerSubmitter(_ chan<- string) {}
-
 func TestQuizWithoutAnswers(t *testing.T) {
 	var quizFilePath = os.Getenv("TEST_GOOD_QUIZ_FILE")
 	var questions, errLoadQuiz = loadQuiz(quizFilePath)
 	if errLoadQuiz != nil {
 		t.Fatalf("Cannot load run the Quiz from the file %s", quizFilePath)
 	}
-	result := runQuiz(questions[0:2], 1, testEmptyAnswerSubmitter)
+	result := runQuiz(questions[0:2], 1, func(_ chan<- string) {})
 	if result != 0 {
 		t.Fatalf("The result of the quiz is not 0, but %d", result)
 	}
