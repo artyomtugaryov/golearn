@@ -34,6 +34,8 @@ jobs:
       uses: actions/setup-go@v3
       with:
         go-version: 1.18
+    - name: Check Environment
+      run: echo $TEST_BAD_QUIZ_FILE && echo $TEST_GOOD_QUIZ_FILE
 
     - name: Unit Tests
       run: cd quiz && TEST_BAD_QUIZ_FILE=data/test_bad.csv TEST_GOOD_QUIZ_FILE=data/test_good.csv go test ./...
