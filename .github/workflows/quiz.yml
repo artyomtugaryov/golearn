@@ -35,5 +35,5 @@ jobs:
 
     - name: Unit Tests
       run: TEST_BAD_QUIZ_FILE=${env.GITHUB_ACTION_PATH}/quiz/data/test_bad.csv |
-          TEST_GOOD_QUIZ_FILE=${envGITHUB_ACTION_PATH}/quiz/data/test_good.csv |
+           TEST_GOOD_QUIZ_FILE=${env.GITHUB_ACTION_PATH}/quiz/data/test_good.csv |
            cd quiz && go test -v ./...
