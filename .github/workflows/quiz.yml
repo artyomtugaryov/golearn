@@ -24,7 +24,9 @@ jobs:
   
   tests:
     runs-on: ubuntu-latest
-    
+    env:
+      TEST_BAD_QUIZ_FILE: data/test_bad.csv
+      TEST_GOOD_QUIZ_FILE: data/test_good.csv
     steps:
     - uses: actions/checkout@v3
 
@@ -34,4 +36,4 @@ jobs:
         go-version: 1.18
 
     - name: Unit Tests
-      run: TEST_BAD_QUIZ_FILE=${GITHUB_ACTION_PATH}/quiz/data/test_bad.csv TEST_GOOD_QUIZ_FILE=${GITHUB_ACTION_PATH}/quiz/data/test_good.csv cd quiz && go test -v ./...
+      run: cd quiz && TEST_BAD_QUIZ_FILE=data/test_bad.csv TEST_GOOD_QUIZ_FILE=data/test_good.csv go test ./...
