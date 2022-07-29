@@ -8,7 +8,7 @@ on:
 
 
 jobs:
-  CI:
+  Quiz:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -24,5 +24,5 @@ jobs:
     - name: Unit Test
       env:
         TEST_BAD_QUIZ_FILE: "${GITHUB_REPOSITORY}/quiz/data/test_bad.csv"
-        TEST_GOOD_QUIZ_FILE: ${GITHUB_WORKSPACE}/quiz/data/test_good.csv
-      run: cd quiz && go test -v ./...
+        TEST_GOOD_QUIZ_FILE: "${GITHUB_WORKSPACE}/quiz/data/test_good.csv"
+      run: pwd && cd quiz && go test -v ./...
