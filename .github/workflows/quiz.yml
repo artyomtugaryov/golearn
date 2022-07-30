@@ -39,7 +39,7 @@ jobs:
 
     - name: Unit Tests
       run: |
-        cd quiz && |
+        cd quiz
         go test ./... -covermode=count -coverprofile=$COVERAGE_REPORT_FILE
         go tool cover -func=$RAW_COVERAGE_FILE -o=$COVERAGE_REPORT_FILE
 
