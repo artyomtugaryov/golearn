@@ -27,7 +27,7 @@ jobs:
     env:
       TEST_BAD_QUIZ_FILE: data/test_bad.csv
       TEST_GOOD_QUIZ_FILE: data/test_good.csv
-      COVERAGE_REPORT_FILE: reports/coverage/coverage.out
+      COVERAGE_REPORT_FILE: coverage.out
 
     steps:
     - uses: actions/checkout@v3
