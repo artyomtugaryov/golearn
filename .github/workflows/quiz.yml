@@ -41,7 +41,7 @@ jobs:
       run: |
         cd quiz
         go test ./... -covermode=count -coverprofile=$COVERAGE_REPORT_FILE
-        go tool cover -func=$RAW_COVERAGE_FILE -o=$COVERAGE_REPORT_FILE
+        go tool cover -func=$COVERAGE_REPORT_FILE -o=$COVERAGE_REPORT_FILE
 
     - name: Go Coverage Badge
       uses: tj-actions/coverage-badge-go@v1.2
